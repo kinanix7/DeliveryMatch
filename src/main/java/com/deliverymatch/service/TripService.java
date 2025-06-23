@@ -23,8 +23,7 @@ public class TripService {
     private final TripMapper tripMapper;
 
     public TripDto createTrip(CreateTripRequest request, Authentication auth) {
-        User driver = userRepository.findByEmail(auth.getName())
-                .orElseThrow(() -> new RuntimeException("Driver not found"));
+        User driver = userRepository.findByEmail(auth.getName()).orElseThrow(() -> new RuntimeException("Driver not found"));
 
         Trip trip = tripMapper.toEntity(request);
         trip.setDriver(driver);

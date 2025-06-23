@@ -64,7 +64,6 @@ public class DeliveryRequestService {
         User user = userRepository.findByEmail(auth.getName())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Vérifier que l'utilisateur est le conducteur du trajet
         if (!request.getTrip().getDriver().equals(user)) {
             throw new RuntimeException("Unauthorized to update this request");
         }

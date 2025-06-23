@@ -20,9 +20,7 @@ public class TripController {
     private final TripService tripService;
 
     @PostMapping("/create")
-    public ResponseEntity<TripDto> createTrip(
-            @RequestBody CreateTripRequest request,
-            Authentication auth) {
+    public ResponseEntity<TripDto> createTrip(@RequestBody CreateTripRequest request, Authentication auth) {
         return ResponseEntity.ok(tripService.createTrip(request, auth));
     }
 
